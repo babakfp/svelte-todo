@@ -4,18 +4,18 @@ import { writable } from 'svelte/store'
 export const todos = writable(browser && JSON.parse(localStorage.getItem('todos')) || [
   {
     id: 1,
-    content: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit sequi animi.',
-    isDone: false,
+    content: 'Buy milk',
+    isDone: true,
   },
   {
     id: 2,
-    content: 'Lorem ipsum dolor sit sequi animi.',
+    content: 'Code',
     isDone: false,
   },
   {
     id: 3,
-    content: 'Lorem, ipsum dolor amet consectetur adipisicing elit.',
-    isDone: true,
+    content: 'Die',
+    isDone: false,
   },
 ])
 
