@@ -3,11 +3,20 @@
 @tailwind utilities;
 
 @layer base {
+
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+  * {
+    @apply !outline-none;
+  }
+
+  *:focus {
+    @apply !outline-2 !outline-yellow-900;
+  }
 
   html,
 	body {
-		@apply overflow-x-hidden;
+		@apply h-full overflow-x-hidden;
   }
 
   body {
@@ -20,14 +29,49 @@
 	}
 
   svg {
-    @apply w-4 h-4 fill-gray-300;
+    @apply w-4 h-4 fill-gray-400;
   }
+
+}
+
+@layer components {
+
+  .btn,
+  .field {
+    @apply duration-200 ease-in-out hover:ring-4 focus:ring-0;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-3 h-10 px-4 rounded select-none whitespace-nowrap;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-white/80;
+  }
+
+  .btn-gray {
+    @apply bg-gray-800 text-white/70 hover:ring-gray-700;
+  }
+
+  .field {
+    @apply w-full px-4 bg-gray-800 rounded placeholder:text-gray-600 hover:ring-gray-700;
+    font-family: inherit;
+  }
+
+  input.field {
+    @apply h-10;
+  }
+
+  textarea.field {
+    @apply py-4;
+  }
+
 }
 
 @layer utilities {
 
   .container {
-    @apply xl:!max-w-screen-xl;
+    @apply sm:!max-w-screen-sm;
   }
 
 }
