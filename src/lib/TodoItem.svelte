@@ -1,6 +1,7 @@
 <script>
-  import { todos } from '$lib/todos.js'
+  import { fly } from 'svelte/transition'
   import OutClick from 'svelte-outclick'
+  import { todos } from '$lib/todos.js'
 
   export let id
   export let content
@@ -78,7 +79,10 @@
   }
 </script>
 
-<li class="grid gap-2 mb-4 pb-4 border-b border-gray-800 last:mb-0 last:pb-0 last:border-0">
+<li
+  class="grid gap-2 mb-4 pb-4 border-b border-gray-800 last:mb-0 last:pb-0 last:border-0"
+  in:fly={{ y: 32, duration: 200 }} out:fly={{ y: -32, duration: 200 }}
+>
   
   {#if !isInEditState}
     <p class="{isDone && 'line-through'}">{content}</p>
