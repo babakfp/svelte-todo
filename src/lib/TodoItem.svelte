@@ -10,6 +10,7 @@
   let isInRemoveState = false
   let errorText = ''
   let bindedContent = content
+  let field
 
   const onFieldValueChange =_=> {
     if (content.length >= 3) {
@@ -37,6 +38,8 @@
 
   const tryEditTodo =_=> {
     isInEditState = true
+    // Added 100ms delay because of form inside {#if} being undefined until it gets rendered...
+    setTimeout(_=> field.focus(), 100)
   }
 
   const DiscardTodoContentchanges =_=> {
@@ -78,10 +81,10 @@
 <li class="grid gap-2 mb-4 pb-4 border-b border-gray-800 last:mb-0 last:pb-0 last:border-0">
   
   {#if !isInEditState}
-    <p class="{isDone ? 'line-through' : ''}">{content}</p>
+    <p class="{isDone && 'line-through'}">{content}</p>
   {:else}
     <form on:submit|preventDefault={confirmTodoEdit}>
-      <input class="field" type="text" placeholder="Todo content..." bind:value={bindedContent} on:input={onFieldValueChange}>
+      <input class="field" type="text" placeholder="Todo content..." bind:this={field} bind:value={bindedContent} on:input={onFieldValueChange}>
       {#if errorText}
         <p class="mt-1 text-xs text-red-400">{errorText}</p>
       {/if}
