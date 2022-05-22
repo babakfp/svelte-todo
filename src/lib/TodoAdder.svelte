@@ -20,7 +20,7 @@
 
     $todos = [
       {
-        id: $todos.length + 1,
+        id: Date.now(),
         content: value,
         isDone: false,
       },
