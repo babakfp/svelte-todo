@@ -81,7 +81,7 @@
 
 <li
   class="grid gap-2 mb-4 pb-4 border-b border-gray-800 last:mb-0 last:pb-0 last:border-0"
-  in:fly={{ y: 32, duration: 200 }} out:fly={{ y: -32, duration: 200 }}
+  in:fly={{ y: 32, duration: 300 }} out:fly={{ y: -32, duration: 100 }}
 >
   
   {#if !isInEditState}
