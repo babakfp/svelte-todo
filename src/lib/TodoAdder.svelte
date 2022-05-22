@@ -3,6 +3,7 @@
   
   export let value = ''
   export let errorText = ''
+  let field
 
   const onValueChange =_=> {
     if (value.length >= 3) {
@@ -28,13 +29,14 @@
     ]
 
     value = ''
+    field.focus()
   }
 </script>
 
 <form on:submit|preventDefault={addNewTodo}>
 
   <div class="flex gap-4">
-    <input class="field" type="text" placeholder="Todo content..." bind:value={value} on:input={onValueChange}>
+    <input class="field" type="text" placeholder="Todo content..." bind:this={field} bind:value={value} on:input={onValueChange}>
     <button class="btn btn-accent">Submit</button>
   </div>
 
